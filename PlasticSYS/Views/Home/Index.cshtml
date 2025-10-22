@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<div class="welcome-container">
+    <div class="welcome-card">
+        <h1 class="welcome-title">
+            <i class="bi bi-hand-index-thumb"></i> ¡Bienvenido a NeoPlastic!
+        </h1>
+        <p class="welcome-subtitle">
+            Sistema integral de gestión para tu negocio
+        </p>
+
+        <div class="welcome-content">
+            <div class="welcome-icon">
+                <i class="bi bi-recycle"></i>
+            </div>
+            <p class="welcome-text">
+                NeoPlastic es una solución completa para administrar tus productos,
+                clientes, ventas y más. Simplifica tus operaciones diarias con
+                nuestras herramientas intuitivas.
+            </p>
+        </div>
+
+        <div class="welcome-features">
+            <div class="feature">
+                <i class="bi bi-box-seam"></i>
+                <span>Gestión de Productos</span>
+            </div>
+            <div class="feature">
+                <i class="bi bi-people"></i>
+                <span>Administración de Clientes</span>
+            </div>
+            <div class="feature">
+                <i class="bi bi-cart"></i>
+                <span>Control de Ventas</span>
+            </div>
+            <div class="feature">
+                <i class="bi bi-graph-up"></i>
+                <span>Reportes y Estadísticas</span>
+            </div>
+        </div>
+
+      
+    </div>
+</div>
+
+<style>
+    /* Estilos generales */
+    .welcome-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+        padding: 20px;
+    }
+
+    .welcome-card {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        padding: 40px;
+        max-width: 800px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Títulos */
+    .welcome-title {
+        color: #4a6baf;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        font-weight: 300;
+    }
+
+    .welcome-subtitle {
+        color: #6c757d;
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        font-weight: 300;
+    }
+
+    /* Contenido principal */
+    .welcome-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+
+    .welcome-icon {
+        font-size: 5rem;
+        color: #4a6baf;
+    }
+
+    .welcome-text {
+        color: #5a6a85;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        max-width: 500px;
+        text-align: left;
+    }
+
+    /* Características */
+    .welcome-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 40px 0;
+    }
+
+    .feature {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        transition: all 0.3s;
+    }
+
+        .feature:hover {
+            background-color: #e3f2fd;
+            transform: translateY(-5px);
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: #4a6baf;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .feature span {
+            color: #5a6a85;
+            font-size: 1rem;
+        }
+
+    /* Enlace de aprendizaje */
+    .welcome-learn {
+        color: #6c757d;
+        margin-top: 30px;
+    }
+
+    .learn-link {
+        color: #4a6baf;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .learn-link:hover {
+            text-decoration: underline;
+        }
+
+    /* Iconos */
+    .bi {
+        margin-right: 8px;
+    }
+</style>

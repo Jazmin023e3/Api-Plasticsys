@@ -1,0 +1,168 @@
+﻿@model PlasticSYS.Models.Usuario
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<h1><i class="bi bi-pencil-square"></i> Editar Usuario</h1>
+
+<h4>Datos del Usuario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" class="edit-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UsuarioId" />
+
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label">
+                    <i class="bi bi-person-fill"></i> Nombre
+                </label>
+                <input asp-for="Nombre" class="form-control" placeholder="Ingrese el nombre" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Correo" class="control-label">
+                    <i class="bi bi-envelope-fill"></i> Correo
+                </label>
+                <input asp-for="Correo" class="form-control" placeholder="Ingrese el correo" />
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Rol" class="control-label">
+                    <i class="bi bi-person-badge-fill"></i> Rol
+                </label>
+                <select asp-for="Rol" class="form-control">
+                    <option value="">Seleccione un rol</option>
+                    <option value="ADMINISTRADOR">Administrador</option>
+                    <option value="Operador">Operador</option>
+
+
+                </select>
+                <span asp-validation-for="Rol" class="text-danger"></span>
+            </div>
+
+            <div class="form-group button-group">
+                <button type="submit" class="btn btn-save">
+                    <i class="bi bi-check-circle"></i> Guardar
+                </button>
+                <a asp-action="Index" class="btn btn-cancel">
+                    <i class="bi bi-x-circle"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+        color: #6c757d;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+
+    h4 {
+        color: #adb5bd;
+        font-weight: 300;
+    }
+
+    hr {
+        border-top: 1px solid #dee2e6;
+        margin-bottom: 30px;
+    }
+
+    /* Estilos del formulario */
+    .edit-form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-control {
+        border-radius: 20px;
+        border: 1px solid #ced4da;
+        padding: 10px 15px;
+        background-color: #f8f9fa;
+        transition: all 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #a5d8ff;
+            box-shadow: 0 0 0 0.2rem rgba(165, 216, 255, 0.25);
+            background-color: white;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        color: #6c757d;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    /* Estilos de los botones */
+    .btn-save {
+        background-color: #b2f2bb;
+        border-color: #b2f2bb;
+        color: #2b8a3e;
+        border-radius: 20px;
+        padding: 8px 20px;
+        transition: all 0.3s;
+    }
+
+        .btn-save:hover {
+            background-color: #8ce99a;
+            border-color: #8ce99a;
+            color: #2b8a3e;
+        }
+
+    .btn-cancel {
+        background-color: #ffdeeb;
+        border-color: #ffdeeb;
+        color: #c2255c;
+        border-radius: 20px;
+        padding: 8px 20px;
+        transition: all 0.3s;
+    }
+
+        .btn-cancel:hover {
+            background-color: #fcc2d7;
+            border-color: #fcc2d7;
+            color: #c2255c;
+        }
+
+    .button-group {
+        margin-top: 30px;
+    }
+
+    /* Estilos de validación */
+    .text-danger {
+        color: #ff8787 !important;
+        font-size: 0.85rem;
+    }
+
+    /* Iconos */
+    .bi {
+        margin-right: 8px;
+    }
+
+    .bi-pencil-square {
+        color: #74c0fc;
+    }
+</style>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

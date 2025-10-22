@@ -1,0 +1,157 @@
+﻿@model PlasticSYS.Models.Marca
+
+@{
+    ViewData["Title"] = "Editar";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<h1><i class="bi bi-pencil-square"></i> Editar Marca</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" class="edit-brand-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MarcaId" />
+
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label">
+                    <i class="bi bi-tag-fill"></i> Nombre de la Marca
+                </label>
+                <input asp-for="Nombre" class="form-control" placeholder="Ingrese el nuevo nombre" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group button-group">
+                <button type="submit" class="btn btn-save">
+                    <i class="bi bi-check-circle-fill"></i> Guardar Cambios
+                </button>
+                <a asp-action="Index" class="btn btn-cancel">
+                    <i class="bi bi-x-circle-fill"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+        color: #6c757d;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+
+    hr {
+        border-top: 1px solid #dee2e6;
+        margin-bottom: 30px;
+    }
+
+    /* Estilos del formulario */
+    .edit-brand-form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-control {
+        border-radius: 20px;
+        border: 1px solid #ced4da;
+        padding: 10px 15px;
+        background-color: #f8f9fa;
+        transition: all 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #a5d8ff;
+            box-shadow: 0 0 0 0.2rem rgba(165, 216, 255, 0.25);
+            background-color: white;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        color: #6c757d;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    /* Estilos de los botones */
+    .btn-save {
+        background-color: #d0ebff;
+        border-color: #d0ebff;
+        color: #1971c2;
+        border-radius: 20px;
+        padding: 8px 20px;
+        transition: all 0.3s;
+    }
+
+        .btn-save:hover {
+            background-color: #a5d8ff;
+            border-color: #a5d8ff;
+            color: #1971c2;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+    .btn-cancel {
+        background-color: #ffdeeb;
+        border-color: #ffdeeb;
+        color: #c2255c;
+        border-radius: 20px;
+        padding: 8px 20px;
+        transition: all 0.3s;
+        margin-left: 10px;
+    }
+
+        .btn-cancel:hover {
+            background-color: #fcc2d7;
+            border-color: #fcc2d7;
+            color: #c2255c;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+    .button-group {
+        margin-top: 30px;
+    }
+
+    /* Estilos de validación */
+    .text-danger {
+        color: #ff8787 !important;
+        font-size: 0.85rem;
+    }
+
+    /* Iconos */
+    .bi {
+        margin-right: 8px;
+    }
+
+    .bi-pencil-square {
+        color: #4dabf7;
+    }
+
+    .bi-tag-fill {
+        color: #4dabf7;
+    }
+
+    .bi-check-circle-fill {
+        color: #1971c2;
+    }
+
+    .bi-x-circle-fill {
+        color: #c2255c;
+    }
+</style>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

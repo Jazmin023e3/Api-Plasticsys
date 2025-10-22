@@ -1,0 +1,147 @@
+﻿@model PlasticSYS.Models.Usuario
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+<h1><i class="bi bi-person-lines-fill"></i> Detalles de Usuario</h1>
+
+<div class="user-details-card">
+    <h4><i class="bi bi-info-circle"></i> Información del Usuario</h4>
+    <hr />
+    <dl class="row details-list">
+        <dt class="col-sm-3 detail-label">
+            <i class="bi bi-person-badge"></i> @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-9 detail-value">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt class="col-sm-3 detail-label">
+            <i class="bi bi-envelope"></i> @Html.DisplayNameFor(model => model.Correo)
+        </dt>
+        <dd class="col-sm-9 detail-value">
+            @Html.DisplayFor(model => model.Correo)
+        </dd>
+
+        <dt class="col-sm-3 detail-label">
+            <i class="bi bi-person-rolodex"></i> @Html.DisplayNameFor(model => model.Rol)
+        </dt>
+        <dd class="col-sm-9 detail-value">
+            @Html.DisplayFor(model => model.Rol)
+        </dd>
+    </dl>
+</div>
+<div class="action-buttons">
+    <a asp-action="Edit" asp-route-id="@Model?.UsuarioId" class="btn btn-edit">
+        <i class="bi bi-pencil-square"></i> Editar
+    </a>
+    <a asp-action="Index" class="btn btn-back">
+        <i class="bi bi-arrow-left"></i> Volver
+    </a>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+        color: #6c757d;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+
+    h4 {
+        color: #adb5bd;
+        font-weight: 300;
+        margin-bottom: 15px;
+    }
+
+    hr {
+        border-top: 1px solid #e9ecef;
+        margin: 15px 0;
+    }
+
+    /* Tarjeta de detalles */
+    .user-details-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+    }
+
+    /* Lista de detalles */
+    .details-list {
+        margin: 0;
+    }
+
+    .detail-label {
+        color: #6c757d;
+        padding: 12px 0;
+        font-weight: 500;
+    }
+
+    .detail-value {
+        color: #495057;
+        padding: 12px 0;
+        background-color: #f8f9fa;
+        padding-left: 20px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    /* Botones */
+    .action-buttons {
+        margin-top: 20px;
+    }
+
+    .btn-edit {
+        background-color: #d0ebff;
+        border-color: #d0ebff;
+        color: #1971c2;
+        border-radius: 20px;
+        padding: 8px 20px;
+        transition: all 0.3s;
+    }
+
+        .btn-edit:hover {
+            background-color: #a5d8ff;
+            border-color: #a5d8ff;
+            color: #1971c2;
+        }
+
+    .btn-back {
+        background-color: #e6fcf5;
+        border-color: #e6fcf5;
+        color: #0ca678;
+        border-radius: 20px;
+        padding: 8px 20px;
+        transition: all 0.3s;
+        margin-left: 10px;
+    }
+
+        .btn-back:hover {
+            background-color: #c3fae8;
+            border-color: #c3fae8;
+            color: #0ca678;
+        }
+
+    /* Iconos */
+    .bi {
+        margin-right: 8px;
+    }
+
+    .bi-person-lines-fill {
+        color: #74c0fc;
+    }
+
+    .bi-info-circle {
+        color: #74c0fc;
+    }
+</style>

@@ -1,0 +1,160 @@
+﻿@model PlasticSYS.Models.Usuario
+
+@{
+    ViewData["Title"] = "Login";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<div class="login-container">
+    <div class="login-card">
+        <h1 class="login-title"><i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión</h1>
+
+        <hr class="login-divider" />
+
+        <form asp-action="Login" class="login-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Correo" class="control-label">
+                    <i class="bi bi-envelope-fill"></i> Correo Electrónico
+                </label>
+                <input asp-for="Correo" class="form-control login-input" placeholder="Ingresa tu correo" />
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Pasword" class="control-label">
+                    <i class="bi bi-lock-fill"></i> Contraseña
+                </label>
+                <input asp-for="Pasword" type="password" class="form-control login-input" placeholder="Ingresa tu contraseña" />
+                <span asp-validation-for="Pasword" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-login">
+                    <i class="bi bi-box-arrow-in-right"></i> Ingresar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    /* Tarjeta de login */
+    .login-card {
+        background-color: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-title {
+        color: #6c757d;
+        margin-bottom: 25px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    .login-divider {
+        border-top: 1px solid #e9ecef;
+        margin-bottom: 30px;
+    }
+
+    /* Campos de formulario */
+    .login-form {
+        margin-top: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    label {
+        color: #6c757d;
+        margin-bottom: 8px;
+        font-weight: 500;
+        display: block;
+    }
+
+    .login-input {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        padding: 12px 15px;
+        background-color: #f8f9fa;
+        transition: all 0.3s;
+    }
+
+    .login-input:focus {
+        border-color: #a5d8ff;
+        box-shadow: 0 0 0 0.2rem rgba(165, 216, 255, 0.25);
+        background-color: white;
+    }
+
+    /* Botón de login */
+    .btn-login {
+        background-color: #a5d8ff;
+        border-color: #a5d8ff;
+        color: #1971c2;
+        border-radius: 8px;
+        padding: 12px 25px;
+        width: 100%;
+        font-size: 1rem;
+        transition: all 0.3s;
+        margin-top: 10px;
+    }
+
+    .btn-login:hover {
+        background-color: #74c0fc;
+        border-color: #74c0fc;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    /* Validación */
+    .text-danger {
+        color: #ff8787 !important;
+        font-size: 0.85rem;
+        margin-top: 5px;
+    }
+
+    /* Iconos */
+    .bi {
+        margin-right: 8px;
+    }
+
+    .bi-box-arrow-in-right {
+        color: #4dabf7;
+    }
+
+    .bi-envelope-fill {
+        color: #4dabf7;
+    }
+
+    .bi-lock-fill {
+        color: #4dabf7;
+    }
+</style>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
