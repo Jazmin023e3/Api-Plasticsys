@@ -1,0 +1,208 @@
+﻿@model PlasticSYS.Models.Cliente
+
+@{
+    ViewData["Title"] = "Editar";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<h1 class="edit-title"><i class="bi bi-person-check-fill"></i> Editar Cliente</h1>
+
+<hr class="divider" />
+
+<div class="edit-form-container">
+    <form asp-action="Edit" class="client-edit-form">
+        <div asp-validation-summary="ModelOnly" class="validation-error"></div>
+        <input type="hidden" asp-for="ClienteId" />
+
+        <div class="form-group">
+            <label asp-for="Nombre" class="form-label">
+                <i class="bi bi-person-badge"></i> Nombre Completo
+            </label>
+            <input asp-for="Nombre" class="form-input" placeholder="Nombre del cliente" />
+            <span asp-validation-for="Nombre" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="form-label">
+                <i class="bi bi-envelope-at"></i> Correo Electrónico
+            </label>
+            <input asp-for="Email" class="form-input" placeholder="correo@ejemplo.com" />
+            <span asp-validation-for="Email" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Telefono" class="form-label">
+                <i class="bi bi-telephone-plus"></i> Teléfono
+            </label>
+            <input asp-for="Telefono" class="form-input" placeholder="Número de teléfono" />
+            <span asp-validation-for="Telefono" class="validation-message"></span>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn-save">
+                <i class="bi bi-save-fill"></i> Guardar Cambios
+            </button>
+            <a asp-action="Index" class="btn-back">
+                <i class="bi bi-arrow-left-circle"></i> Regresar
+            </a>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f5f7fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+    }
+
+    .edit-title {
+        color: #5a6a85;
+        margin-bottom: 15px;
+        font-weight: 300;
+        font-size: 28px;
+    }
+
+    .divider {
+        border-top: 1px solid #d1d9e6;
+        margin: 15px 0 25px 0;
+    }
+
+    /* Contenedor del formulario */
+    .edit-form-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Grupos de formulario */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        color: #5a6a85;
+        margin-bottom: 8px;
+        font-weight: 500;
+        display: block;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #d1d9e6;
+        border-radius: 8px;
+        background-color: #f8fafc;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+
+        .form-input:focus {
+            border-color: #a5c1ff;
+            box-shadow: 0 0 0 3px rgba(165, 193, 255, 0.2);
+            background-color: white;
+            outline: none;
+        }
+
+    /* Botones */
+    .button-group {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .btn-save {
+        background-color: #a5d8ff;
+        color: #1a4b8c;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+    }
+
+        .btn-save:hover {
+            background-color: #8bc4f7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .btn-back {
+        background-color: #e6fcf5;
+        color: #0ca678;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+        .btn-back:hover {
+            background-color: #c3fae8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Validación */
+    .validation-error {
+        color: #ff6b6b;
+        margin-bottom: 15px;
+        padding: 10px;
+        background-color: #fff0f0;
+        border-radius: 6px;
+    }
+
+    .validation-message {
+        color: #ff6b6b;
+        font-size: 14px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    /* Iconos */
+    .bi {
+        margin-right: 8px;
+        font-size: 18px;
+    }
+
+    .bi-person-check-fill {
+        color: #4a6baf;
+    }
+
+    .bi-person-badge {
+        color: #5a6a85;
+    }
+
+    .bi-envelope-at {
+        color: #5a6a85;
+    }
+
+    .bi-telephone-plus {
+        color: #5a6a85;
+    }
+
+    .bi-save-fill {
+        color: #1a4b8c;
+    }
+
+    .bi-arrow-left-circle {
+        color: #0ca678;
+    }
+</style>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

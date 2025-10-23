@@ -1,0 +1,227 @@
+﻿@model IEnumerable<PlasticSYS.Models.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+<<div class="products-container">
+    <h1 class="products-title"><i class="bi bi-boxes"></i> Lista de Productos</h1>
+
+    <div class="action-bar">
+        <a asp-action="Create" class="btn-create">
+            <i class="bi bi-plus-circle"></i> Nuevo Producto
+        </a>
+    </div>
+
+    <div class="products-table-container">
+        <table class="products-table">
+            <thead>
+                <tr class="table-header">
+                    <th>
+                        <i class="bi bi-tag"></i> @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th>
+                        <i class="bi bi-currency-dollar"></i> @Html.DisplayNameFor(model => model.Precio)
+                    </th>
+                    <th>
+                        <i class="bi bi-bookmark"></i> @Html.DisplayNameFor(model => model.Marca)
+                    </th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="table-row">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            $@Html.DisplayFor(modelItem => item.Precio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Marca.Nombre)
+                        </td>
+                        <td class="action-buttons">
+                            <a asp-action="Edit" asp-route-id="@item.ProductoId" class="btn-edit">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.ProductoId" class="btn-details">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.ProductoId" class="btn-delete">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+    }
+
+    .products-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Títulos */
+    .products-title {
+        color: #4a6baf;
+        margin-bottom: 20px;
+        font-weight: 300;
+        font-size: 28px;
+    }
+
+    /* Barra de acciones */
+    .action-bar {
+        margin-bottom: 20px;
+    }
+
+    .btn-create {
+        background-color: #b2e2c6;
+        color: #2a6b47;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+        .btn-create:hover {
+            background-color: #9bd4b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Tabla de productos */
+    .products-table-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        overflow-x: auto;
+    }
+
+    .products-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table-header {
+        background-color: #f1f3f5;
+        color: #495057;
+    }
+
+        .table-header th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 500;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+    .table-row td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #e9ecef;
+        vertical-align: middle;
+    }
+
+    .table-row:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* Botones de acción */
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-edit, .btn-details, .btn-delete {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .btn-edit {
+        background-color: #d0ebff;
+        color: #1971c2;
+    }
+
+        .btn-edit:hover {
+            background-color: #a5d8ff;
+            color: white;
+        }
+
+    .btn-details {
+        background-color: #e6fcf5;
+        color: #0ca678;
+    }
+
+        .btn-details:hover {
+            background-color: #c3fae8;
+            color: white;
+        }
+
+    .btn-delete {
+        background-color: #ffdeeb;
+        color: #c2255c;
+    }
+
+        .btn-delete:hover {
+            background-color: #fcc2d7;
+            color: white;
+        }
+
+    /* Iconos */
+    .bi {
+        margin-right: 5px;
+    }
+
+    .bi-boxes {
+        color: #4a6baf;
+    }
+
+    .bi-tag {
+        color: #5a6a85;
+    }
+
+    .bi-currency-dollar {
+        color: #28a745;
+    }
+
+    .bi-bookmark {
+        color: #5a6a85;
+    }
+
+    .bi-pencil {
+        color: #1971c2;
+    }
+
+    .bi-eye {
+        color: #0ca678;
+    }
+
+    .bi-trash {
+        color: #c2255c;
+    }
+</style>

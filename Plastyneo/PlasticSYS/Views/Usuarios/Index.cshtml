@@ -1,0 +1,190 @@
+﻿@model IEnumerable<PlasticSYS.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<h1><i class="bi bi-people-fill"></i> Lista de Usuarios</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-create">
+        <i class="bi bi-plus-circle"></i> Crear usuario
+    </a>
+</p>
+
+<table class="table user-table">
+    <thead>
+        <tr class="table-header">
+            <th>
+                <i class="bi bi-person-badge"></i> @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                <i class="bi bi-envelope"></i> @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                <i class="bi bi-person-rolodex"></i> @Html.DisplayNameFor(model => model.Rol)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-row">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rol)
+                </td>
+                <td class="action-buttons">
+                    <a asp-action="Edit" asp-route-id="@item.UsuarioId" class="btn btn-edit">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.UsuarioId" class="btn btn-details">
+                        <i class="bi bi-eye-fill"></i> Detalles
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.UsuarioId" class="btn btn-delete">
+                        <i class="bi bi-trash-fill"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+        color: #6c757d;
+        margin-bottom: 25px;
+        font-weight: 300;
+    }
+
+    /* Estilos de botones */
+    .btn-create {
+        background-color: #b2f2bb;
+        border-color: #b2f2bb;
+        color: #2b8a3e;
+        border-radius: 20px;
+        padding: 8px 20px;
+        transition: all 0.3s;
+        margin-bottom: 20px;
+    }
+
+        .btn-create:hover {
+            background-color: #8ce99a;
+            border-color: #8ce99a;
+            color: #2b8a3e;
+        }
+
+    .btn-edit {
+        background-color: #d0ebff;
+        border-color: #d0ebff;
+        color: #1971c2;
+        border-radius: 20px;
+        padding: 5px 12px;
+        transition: all 0.3s;
+        margin-right: 5px;
+    }
+
+        .btn-edit:hover {
+            background-color: #a5d8ff;
+            border-color: #a5d8ff;
+            color: #1971c2;
+        }
+
+    .btn-details {
+        background-color: #e6fcf5;
+        border-color: #e6fcf5;
+        color: #0ca678;
+        border-radius: 20px;
+        padding: 5px 12px;
+        transition: all 0.3s;
+        margin-right: 5px;
+    }
+
+        .btn-details:hover {
+            background-color: #c3fae8;
+            border-color: #c3fae8;
+            color: #0ca678;
+        }
+
+    .btn-delete {
+        background-color: #ffdeeb;
+        border-color: #ffdeeb;
+        color: #c2255c;
+        border-radius: 20px;
+        padding: 5px 12px;
+        transition: all 0.3s;
+    }
+
+        .btn-delete:hover {
+            background-color: #fcc2d7;
+            border-color: #fcc2d7;
+            color: #c2255c;
+        }
+
+    /* Estilos de la tabla */
+    .user-table {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .table-header {
+        background-color: #f1f3f5;
+        color: #495057;
+    }
+
+        .table-header th {
+            padding: 15px;
+            font-weight: 500;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+    .table-row td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #e9ecef;
+        vertical-align: middle;
+    }
+
+    .table-row:hover {
+        background-color: #f8f9fa;
+    }
+
+    .action-buttons {
+        white-space: nowrap;
+    }
+
+    /* Iconos */
+    .bi {
+        margin-right: 8px;
+    }
+
+    .bi-people-fill {
+        color: #74c0fc;
+    }
+
+    .bi-person-badge {
+        color: #4dabf7;
+    }
+
+    .bi-envelope {
+        color: #f783ac;
+    }
+
+    .bi-person-rolodex {
+        color: #748ffc;
+    }
+</style>

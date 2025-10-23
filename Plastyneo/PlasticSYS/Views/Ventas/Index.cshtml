@@ -1,0 +1,213 @@
+﻿@model IEnumerable<PlasticSYS.Models.Venta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<h1><i class="bi bi-cart4"></i> Listado de Ventas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-create">
+        <i class="bi bi-plus-circle"></i> Nueva Venta
+    </a>
+</p>
+
+<table class="table sales-table">
+    <thead>
+        <tr class="table-header">
+            <th>
+                <i class="bi bi-calendar"></i> @Html.DisplayNameFor(model => model.FechaVenta)
+            </th>
+            <th>
+                <i class="bi bi-currency-dollar"></i> @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                <i class="bi bi-person"></i> @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                <i class="bi bi-box-seam"></i> @Html.DisplayNameFor(model => model.Producto)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-row">
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.Nombre)
+                </td>
+                <td class="action-buttons">
+                    <a asp-action="Edit" asp-route-id="@item.VentaId" class="btn btn-edit">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.VentaId" class="btn btn-details">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.VentaId" class="btn btn-delete">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+        color: #6c757d;
+        margin-bottom: 25px;
+        font-weight: 300;
+    }
+
+    /* Estilos de botones */
+    .btn-create {
+        background-color: #b2f2bb;
+        border-color: #b2f2bb;
+        color: #2b8a3e;
+        border-radius: 20px;
+        padding: 8px 20px;
+        transition: all 0.3s;
+        margin-bottom: 20px;
+    }
+
+        .btn-create:hover {
+            background-color: #8ce99a;
+            border-color: #8ce99a;
+            color: #2b8a3e;
+        }
+
+    /* Estilos de la tabla */
+    .sales-table {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .table-header {
+        background-color: #f1f3f5;
+        color: #495057;
+    }
+
+        .table-header th {
+            padding: 15px;
+            font-weight: 500;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+    .table-row td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #e9ecef;
+        vertical-align: middle;
+    }
+
+    .table-row:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* Botones de acción */
+    .action-buttons {
+        white-space: nowrap;
+    }
+
+    .btn-edit {
+        background-color: #d0ebff;
+        border-color: #d0ebff;
+        color: #1971c2;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        margin-right: 5px;
+    }
+
+        .btn-edit:hover {
+            background-color: #a5d8ff;
+            border-color: #a5d8ff;
+            color: #1971c2;
+        }
+
+    .btn-details {
+        background-color: #e6fcf5;
+        border-color: #e6fcf5;
+        color: #0ca678;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        margin-right: 5px;
+    }
+
+        .btn-details:hover {
+            background-color: #c3fae8;
+            border-color: #c3fae8;
+            color: #0ca678;
+        }
+
+    .btn-delete {
+        background-color: #ffdeeb;
+        border-color: #ffdeeb;
+        color: #c2255c;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+    }
+
+        .btn-delete:hover {
+            background-color: #fcc2d7;
+            border-color: #fcc2d7;
+            color: #c2255c;
+        }
+
+    /* Iconos */
+    .bi {
+        font-size: 1rem;
+    }
+
+    .bi-cart4 {
+        color: #74c0fc;
+    }
+
+    .bi-calendar {
+        color: #4dabf7;
+    }
+
+    .bi-currency-dollar {
+        color: #51cf66;
+    }
+
+    .bi-person {
+        color: #748ffc;
+    }
+
+    .bi-box-seam {
+        color: #f783ac;
+    }
+</style>

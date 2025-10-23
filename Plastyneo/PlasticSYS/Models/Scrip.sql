@@ -1,0 +1,56 @@
+CREATE DATABASE PlasticSys;
+GO
+USE PlasticSys;
+GO
+
+-- TABLA USUARIO
+CREATE TABLE Usuario (
+    UsuarioID INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre NVARCHAR(100) NOT NULL,
+    Correo NVARCHAR(100) UNIQUE NOT NULL,
+    Pasword NVARCHAR(255) NOT NULL,  
+    Rol NVARCHAR(50) NOT NULL CHECK (Rol IN ('Operador', 'ADMINISTRADOR'))
+);
+GO
+
+-- TABLA MARCA
+CREATE TABLE Marcas (
+    MarcaID INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre NVARCHAR(100) NOT NULL
+);
+GO
+
+-- TABLA PRODUCTO
+CREATE TABLE Productos (
+    ProductoID INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre NVARCHAR(100) NOT NULL,
+	Precio DECIMAL(10,2) NOT NULL CHECK (Precio > 0),
+    MarcaID INT FOREIGN KEY REFERENCES Marcas(MarcaID) 
+    
+);
+GO
+
+-- TABLA CLIENTE
+CREATE TABLE Clientes (
+    ClienteID INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(100) UNIQUE NOT NULL,
+    Telefono NVARCHAR(20) NOT NULL
+);
+GO
+
+-- TABLA VENTA 
+CREATE TABLE Ventas (
+    VentaID INT IDENTITY(1,1) PRIMARY KEY,
+	 FechaVenta DATETIME DEFAULT GETDATE(),
+    Total DECIMAL(10,2) NOT NULL,
+    ClienteID INT  FOREIGN KEY REFERENCES Clientes(ClienteID) ,
+    ProductoID INT FOREIGN KEY REFERENCES Productos(ProductoID) 
+   
+  
+   
+    
+);
+GO
+INSERT INTO Usuario (Nombre, Correo, Pasword, Rol)
+VALUES ('Administrador', 'Admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'ADMINISTRADOR');

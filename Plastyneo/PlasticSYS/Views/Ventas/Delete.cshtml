@@ -1,0 +1,197 @@
+﻿@model PlasticSYS.Models.Venta
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<h1><i class="bi bi-trash3-fill"></i> Eliminar Venta</h1>
+
+<div class="delete-sale-card">
+    <div class="alert alert-warning" role="alert">
+        <h4><i class="bi bi-exclamation-triangle-fill"></i> ¿Estás seguro que deseas eliminar esta venta?</h4>
+        <p>Esta acción no se puede deshacer y se perderán todos los datos de la venta.</p>
+    </div>
+
+    <div class="sale-details">
+        <h5><i class="bi bi-cart-x-fill"></i> Detalles de la Venta</h5>
+        <hr />
+        <dl class="row details-list">
+            <dt class="col-sm-3 detail-label">
+                <i class="bi bi-calendar-date"></i> @Html.DisplayNameFor(model => model.FechaVenta)
+            </dt>
+            <dd class="col-sm-9 detail-value">
+                @Html.DisplayFor(model => model.FechaVenta)
+            </dd>
+
+            <dt class="col-sm-3 detail-label">
+                <i class="bi bi-currency-dollar"></i> @Html.DisplayNameFor(model => model.Total)
+            </dt>
+            <dd class="col-sm-9 detail-value">
+                @Html.DisplayFor(model => model.Total)
+            </dd>
+
+            <dt class="col-sm-3 detail-label">
+                <i class="bi bi-person-vcard"></i> @Html.DisplayNameFor(model => model.Cliente)
+            </dt>
+            <dd class="col-sm-9 detail-value">
+                @Html.DisplayFor(model => model.Cliente.Nombre)
+            </dd>
+
+            <dt class="col-sm-3 detail-label">
+                <i class="bi bi-box-seam"></i> @Html.DisplayNameFor(model => model.Producto)
+            </dt>
+            <dd class="col-sm-9 detail-value">
+                @Html.DisplayFor(model => model.Producto.Nombre)
+            </dd>
+        </dl>
+    </div>
+
+    <form asp-action="Delete" class="delete-form mt-4">
+        <input type="hidden" asp-for="VentaId" />
+        <div class="action-buttons">
+            <button type="submit" class="btn btn-delete-confirm">
+                <i class="bi bi-trash3-fill"></i> Confirmar Eliminación
+            </button>
+            <a asp-action="Index" class="btn btn-cancel">
+                <i class="bi bi-x-circle"></i> Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+        color: #ff6b6b;
+        margin-bottom: 25px;
+        font-weight: 300;
+    }
+
+    h4, h5 {
+        color: #6c757d;
+        font-weight: 300;
+    }
+
+    hr {
+        border-top: 1px solid #ffe3e3;
+        margin: 15px 0;
+    }
+
+    /* Tarjeta de eliminación */
+    .delete-sale-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Alerta de advertencia */
+    .alert-warning {
+        background-color: #fff3bf;
+        border-color: #ffec99;
+        color: #5f3dc4;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+
+    /* Detalles de la venta */
+    .sale-details {
+        margin-bottom: 30px;
+    }
+
+    .detail-label {
+        color: #6c757d;
+        padding: 12px 0;
+        font-weight: 500;
+    }
+
+    .detail-value {
+        color: #495057;
+        padding: 12px 0;
+        padding-left: 20px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        background-color: #f8f9fa;
+    }
+
+    /* Formulario de eliminación */
+    .delete-form {
+        margin-top: 30px;
+    }
+
+    /* Botones */
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-delete-confirm {
+        background-color: #ff8787;
+        border-color: #ff8787;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 25px;
+        transition: all 0.3s;
+    }
+
+        .btn-delete-confirm:hover {
+            background-color: #ff6b6b;
+            border-color: #ff6b6b;
+            color: white;
+        }
+
+    .btn-cancel {
+        background-color: #e6fcf5;
+        border-color: #e6fcf5;
+        color: #0ca678;
+        border-radius: 20px;
+        padding: 10px 25px;
+        transition: all 0.3s;
+    }
+
+        .btn-cancel:hover {
+            background-color: #c3fae8;
+            border-color: #c3fae8;
+            color: #0ca678;
+        }
+
+    /* Iconos */
+    .bi {
+        margin-right: 8px;
+    }
+
+    .bi-trash3-fill {
+        color: #ff6b6b;
+    }
+
+    .bi-exclamation-triangle-fill {
+        color: #fcc419;
+    }
+
+    .bi-cart-x-fill {
+        color: #ff8787;
+    }
+
+    .bi-calendar-date {
+        color: #748ffc;
+    }
+
+    .bi-currency-dollar {
+        color: #51cf66;
+    }
+
+    .bi-person-vcard {
+        color: #4dabf7;
+    }
+
+    .bi-box-seam {
+        color: #f783ac;
+    }
+</style>

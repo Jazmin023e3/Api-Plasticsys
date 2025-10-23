@@ -1,0 +1,174 @@
+﻿@model PlasticSYS.Models.Usuario
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+<h1><i class="bi bi-trash-fill"></i> Eliminar Usuario</h1>
+
+<div class="delete-card">
+    <div class="alert alert-warning" role="alert">
+        <h4><i class="bi bi-exclamation-triangle-fill"></i> ¿Estás seguro de eliminar este registro?</h4>
+        <p>Esta acción no se puede deshacer y se perderán todos los datos del usuario.</p>
+    </div>
+
+    <div class="user-details">
+        <h5><i class="bi bi-person-x-fill"></i> Datos del usuario a eliminar</h5>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3 detail-label">
+                <i class="bi bi-person-badge"></i> @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+            <dd class="col-sm-9 detail-value">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+
+            <dt class="col-sm-3 detail-label">
+                <i class="bi bi-envelope"></i> @Html.DisplayNameFor(model => model.Correo)
+            </dt>
+            <dd class="col-sm-9 detail-value">
+                @Html.DisplayFor(model => model.Correo)
+            </dd>
+
+            <dt class="col-sm-3 detail-label">
+                <i class="bi bi-person-rolodex"></i> @Html.DisplayNameFor(model => model.Rol)
+            </dt>
+            <dd class="col-sm-9 detail-value">
+                @Html.DisplayFor(model => model.Rol)
+            </dd>
+        </dl>
+    </div>
+
+    <form asp-action="Delete" class="delete-form">
+        <input type="hidden" asp-for="UsuarioId" />
+        <div class="action-buttons">
+            <button type="submit" class="btn btn-delete-confirm">
+                <i class="bi bi-trash-fill"></i> Confirmar Eliminación
+            </button>
+            <a asp-action="Index" class="btn btn-cancel">
+                <i class="bi bi-x-circle"></i> Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+        color: #ff6b6b;
+        margin-bottom: 25px;
+        font-weight: 300;
+    }
+
+    h4, h5 {
+        color: #6c757d;
+        font-weight: 300;
+    }
+
+    hr {
+        border-top: 1px solid #ffe3e3;
+        margin: 15px 0;
+    }
+
+    /* Tarjeta de eliminación */
+    .delete-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Alerta de advertencia */
+    .alert-warning {
+        background-color: #fff3bf;
+        border-color: #ffec99;
+        color: #5f3dc4;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+
+    /* Detalles del usuario */
+    .user-details {
+        margin-bottom: 30px;
+    }
+
+    .detail-label {
+        color: #6c757d;
+        padding: 12px 0;
+        font-weight: 500;
+    }
+
+    .detail-value {
+        color: #495057;
+        padding: 12px 0;
+        padding-left: 20px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    /* Formulario de eliminación */
+    .delete-form {
+        margin-top: 30px;
+    }
+
+    /* Botones */
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-delete-confirm {
+        background-color: #ff8787;
+        border-color: #ff8787;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 25px;
+        transition: all 0.3s;
+    }
+
+        .btn-delete-confirm:hover {
+            background-color: #ff6b6b;
+            border-color: #ff6b6b;
+            color: white;
+        }
+
+    .btn-cancel {
+        background-color: #e6fcf5;
+        border-color: #e6fcf5;
+        color: #0ca678;
+        border-radius: 20px;
+        padding: 10px 25px;
+        transition: all 0.3s;
+    }
+
+        .btn-cancel:hover {
+            background-color: #c3fae8;
+            border-color: #c3fae8;
+            color: #0ca678;
+        }
+
+    /* Iconos */
+    .bi {
+        margin-right: 8px;
+    }
+
+    .bi-trash-fill {
+        color: #ff6b6b;
+    }
+
+    .bi-exclamation-triangle-fill {
+        color: #fcc419;
+    }
+
+    .bi-person-x-fill {
+        color: #ff8787;
+    }
+</style>
